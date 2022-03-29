@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { logInWithEmailAndPassword } from "../services/authentication";
 // import { API } from "../api";
 // import Axios from "../services/axios";
 // import axios from "../services/axios";
@@ -9,16 +10,15 @@ export default class Login extends Component {
     password: "",
     isError: false,
     errorMessage: "",
-    allRequiredFields: false
+    allRequiredFields: false,
   };
-  
+
   componentDidMount = () => {
-    // making sure that login screen does not appear if user is logged in and redirected to the dashboard  
+    // making sure that login screen does not appear if user is logged in and redirected to the dashboard
     // if(JSON.parse(localStorage.getItem('token'))){
     //   window.location = '/dashboard'
     // }
-  }  
-
+  };
 
   /**
    * Validates all form fields are present
@@ -61,36 +61,53 @@ export default class Login extends Component {
    */
   submitLoginForm = () => {
     if (this.state.allRequiredFields) {
-      const data = {
-        password: this.state.password,
-        email: this.state.email,
-      };
-    //   Axios("POST", API.LOGIN, false, data)
-    //   .then(res => {
-    //     let data = res.data
-    //     console.log("Login response : ", data)
-    //     if(data.Success) {
-    //       if(data?.Data?.token){
-    //         localStorage.setItem('token', JSON.stringify(data?.Data?.token))
-    //         window.location = '/dashboard';
-    //       } else {
-    //         window.alert("Couldn't log you in at this moment. Please try again later")
-    //       }
-    //     } else {
-    //       if(data?.ResponseCode === 402){
-    //         window.alert(data.ErrorMessage);
-    //       } else {
-    //         window.alert("An unexpected error occurred. Please try again later.");
-    //       }
-    //     }
-    //   })
+    //   const data = {
+    //     password: this.state.password,
+    //     email: this.state.email,
+    //   };
+
+      logInWithEmailAndPassword(this.state.email, this.state.password)
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log("Login successful with user", user)
+          
+          sessionStorage.setItem('Auth Token', userCredential?._tokenResponse?.refreshToken)
+
+          window.location = '/clock'
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+        });
+
+
+      //   Axios("POST", API.LOGIN, false, data)
+      //   .then(res => {
+      //     let data = res.data
+      //     console.log("Login response : ", data)
+      //     if(data.Success) {
+      //       if(data?.Data?.token){
+      //         localStorage.setItem('token', JSON.stringify(data?.Data?.token))
+      //         window.location = '/dashboard';
+      //       } else {
+      //         window.alert("Couldn't log you in at this moment. Please try again later")
+      //       }
+      //     } else {
+      //       if(data?.ResponseCode === 402){
+      //         window.alert(data.ErrorMessage);
+      //       } else {
+      //         window.alert("An unexpected error occurred. Please try again later.");
+      //       }
+      //     }
+      //   })
     }
   };
 
-
   render() {
     return (
-      <div className="w-full h-full flex flex-center justify-center mt-10 sm:m-0">
+      <div className="w-full h-full flex flex-center justify-center mt-10 sm:mt-10">
         <div className="wrapper flex flex-col my-auto w-72 sm:w-96 px-3 py-10 rounded-md border-2 shadow-md">
           <div className="text-skin-dark text-center font-bold text-lg mb-4">
             Financial Advisor Login
