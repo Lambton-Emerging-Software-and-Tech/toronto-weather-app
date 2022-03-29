@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@layer base {
+  :root {
+    --color-text-dark: #000000;
+    --color-text-light: #ffffff;
+    --color-button: rgb(6 78 59);
+    --color-button-hover: rgb(6 95 70);;
+    --color-background-dark: rgb(6 78 59);
+    --color-background: rgb(5 150 105);
+  }
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
