@@ -1,4 +1,4 @@
-import { weatherapi_token } from "../firebase-config";
+import { weatherapi_token } from "../config";
 import { baseWeatherAPI } from "./constants";
 
 export const fetchTorontoWeatherData = () => {
