@@ -110,7 +110,7 @@ export default class Login extends Component {
       <div className="w-full h-full flex flex-center justify-center mt-10 sm:mt-10">
         <div className="wrapper flex flex-col my-auto w-72 sm:w-96 px-3 py-10 rounded-md border-2 shadow-md">
           <div className="text-skin-dark text-center font-bold text-lg mb-4">
-            Financial Advisor Login
+            Toronto Weather App Login
           </div>
           <div className="my-4">
             <div className="mb-3">

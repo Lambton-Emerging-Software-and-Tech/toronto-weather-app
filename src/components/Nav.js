@@ -8,8 +8,8 @@ export default class Nav extends Component {
     isLoggedIn: false
   }
   componentDidMount = () => {
-    let accessToken = localStorage.getItem('access_token')
-    let displayName = localStorage.getItem('displayName')
+    let accessToken = JSON.parse(localStorage.getItem('access_token'))
+    let displayName = JSON.parse(localStorage.getItem('displayName'))
     if(accessToken){
       console.log("Found User")
       this.setState({
@@ -35,7 +35,7 @@ export default class Nav extends Component {
           {/* logo */}
           <div className="flex items-center justify-evenly w-fit gap-x-2 py-3 ">
               <div className="text-skin-light">
-              <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+              <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
               </div>
               <div className="text-skin-light font-bold text-xl">
                 Toronto Weather App
@@ -53,7 +53,7 @@ export default class Nav extends Component {
           {
             this.state.isLoggedIn ? 
             <div className="flex gap-x-6 items-center justify-evenly">
-              <div>Hello {this.state.displayName}</div>
+              <div>Hello, {this.state.displayName}</div>
               <div onClick={this.LogoutUser.bind(this)} className="bg-skin-button hover:bg-skin-buttonhover font-bold px-5 py-3 rounded-md">Logout</div>
             </div>
             :
