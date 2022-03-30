@@ -1,5 +1,5 @@
 import { fireApp } from '../firebase';
-import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, updateProfile } from 'firebase/auth'
+import {getAuth , signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, updateProfile } from 'firebase/auth'
 
 const auth = getAuth(); 
 onAuthStateChanged(auth, (user) => {
@@ -8,14 +8,21 @@ onAuthStateChanged(auth, (user) => {
       // User is signed in, see docs for a list of available properties
       // https://firebase.google.com/docs/reference/js/firebase.User
       const uid = user.uid;
+      localStorage.setItem('access_token', JSON.stringify(user?.accessToken));
+      localStorage.setItem('refresh_token', JSON.stringify(user.refreshToken))
+      localStorage.setItem('displayName', JSON.stringify(user.displayName))
+
       // ...
     } else {
-      // User is signed out
-      // ...
+      localStorage.removeItem('access_token');
+      localStorage.removeItem('refresh_token')
+      localStorage.removeItem('displayName')
     }
   });
 
-
+export const userLogout = () => {
+  return signOut(auth)
+}
 export const registerUserwithEmailAndPassword = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
 }
