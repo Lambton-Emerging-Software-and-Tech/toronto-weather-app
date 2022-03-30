@@ -12,7 +12,6 @@ onAuthStateChanged(auth, (user) => {
       localStorage.setItem('refresh_token', JSON.stringify(user.refreshToken))
       localStorage.setItem('displayName', JSON.stringify(user.displayName))
 
-      // ...
     } else {
       localStorage.removeItem('access_token');
       localStorage.removeItem('refresh_token')
