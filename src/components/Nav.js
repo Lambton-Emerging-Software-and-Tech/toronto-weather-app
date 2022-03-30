@@ -1,6 +1,33 @@
 import React, { Component } from 'react'
+import { userLogout } from '../services/authentication'
 
 export default class Nav extends Component {
+
+  state = {
+    displayName: 'User',
+    isLoggedIn: false
+  }
+  componentDidMount = () => {
+    let accessToken = localStorage.getItem('access_token')
+    let displayName = localStorage.getItem('displayName')
+    if(accessToken){
+      console.log("Found User")
+      this.setState({
+        isLoggedIn: true,
+        displayName
+      })
+    }
+  }
+
+  LogoutUser = () => {
+    userLogout()
+    .then((response) => {
+      console.log("User loged out Success" , response)
+      window.alert('User logged out Success')
+      window.location = '/login'
+    })
+  }
+
   render() {
     return (
         <div className="text-skin-light">
@@ -17,16 +44,24 @@ export default class Nav extends Component {
           {/* main nav */}
           <div className="flex items-center justify-evenly">
           <div className="flex gap-x-6 items-center justify-evenly mr-20">
+            <a href='/clock' className="">Clock</a>
+            <a href='/weather' className="">Toronto Weather</a>
             <a href='/aboutus' className="">About Us</a>
             <a href='/contactus' className="">Contact Us</a>
-            <a href='/weather' className="">Toronto Weather</a>
-            <a href='/clock' className="">Clock</a>
           </div>
   
-          <div className="flex gap-x-6 items-center justify-evenly">
-            <div className="font-bold">Login</div>
-            <div className="bg-skin-button hover:bg-skin-buttonhover font-bold px-5 py-3 rounded-md">Signup</div>
+          {
+            this.state.isLoggedIn ? 
+            <div className="flex gap-x-6 items-center justify-evenly">
+              <div>Hello {this.state.displayName}</div>
+              <div onClick={this.LogoutUser.bind(this)} className="bg-skin-button hover:bg-skin-buttonhover font-bold px-5 py-3 rounded-md">Logout</div>
+            </div>
+            :
+            <div className="flex gap-x-6 items-center justify-evenly">
+            <a href='/login' className="font-bold">Login</a>
+            <a href='/register' className="bg-skin-button hover:bg-skin-buttonhover font-bold px-5 py-3 rounded-md">Signup</a>
           </div>
+          }
           </div>
           {/* login / logout  */}
         </div>
