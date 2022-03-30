@@ -1,5 +1,6 @@
+import { deleteUser } from "firebase/auth";
 import React, { Component } from "react";
-import { registerUserwithEmailAndPassword } from "../services/authentication";
+import { registerUserwithEmailAndPassword, updateUserDisplayName } from "../services/authentication";
 // import { API } from "../api";
 // import Axios from "../services/axios";
 
@@ -140,6 +141,28 @@ export default class Register extends Component {
         console.log("Register Success!! with ", userCredential)
         sessionStorage.setItem('Auth Token', userCredential?._tokenResponse?.refreshToken)
         // ...
+
+        // Update user displayname
+        let displayName = data.firstname + " " + data.lastname;  
+        updateUserDisplayName(user, displayName)
+          .then(() => {
+            console.log(`User's display name updated to ${displayName}`);
+            window.location = '/login';
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+
+            // delete user and redirect to register page if there is an error in updating the displayname
+            deleteUser(user).then(() => {
+              console.log('user successfully deleted');
+              window.location = '/register';
+            }).catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+            });
+          })
+
         })
         .catch((error) => {
             const errorCode = error.code;
