@@ -17,15 +17,15 @@ export default class Nav extends Component {
           {/* main nav */}
           <div className="flex items-center justify-evenly">
           <div className="flex gap-x-6 items-center justify-evenly mr-20">
-            <div className="">About Us</div>
-            <div className="">Contact Us</div>
-            <div className="">Toronto Weather</div>
-            <div className="">Clock</div>
+            <a href='/aboutus' className="">About Us</a>
+            <a href='/contactus' className="">Contact Us</a>
+            <a href='/weather' className="">Toronto Weather</a>
+            <a href='/clock' className="">Clock</a>
           </div>
   
           <div className="flex gap-x-6 items-center justify-evenly">
             <div className="font-bold">Login</div>
-            <div className="bg-skin-button font-bold px-5 py-3 rounded-md">Signup</div>
+            <div className="bg-skin-button hover:bg-skin-buttonhover font-bold px-5 py-3 rounded-md">Signup</div>
           </div>
           </div>
           {/* login / logout  */}
