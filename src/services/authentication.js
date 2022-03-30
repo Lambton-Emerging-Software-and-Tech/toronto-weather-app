@@ -1,5 +1,5 @@
 import { fireApp } from '../firebase';
-import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged} from 'firebase/auth'
+import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, updateProfile, deleteUser} from 'firebase/auth'
 
 const auth = getAuth(); 
 onAuthStateChanged(auth, (user) => {
@@ -17,9 +17,16 @@ onAuthStateChanged(auth, (user) => {
 
 
 export const registerUserwithEmailAndPassword = (email, password) => {
-    return createUserWithEmailAndPassword(auth, email, password)
+    return createUserWithEmailAndPassword(auth, email, password);
 }
 
 export const logInWithEmailAndPassword = (email, password) => {
-    return signInWithEmailAndPassword(auth, email, password)
+    return signInWithEmailAndPassword(auth, email, password);
 }
+
+export const updateUserDisplayName = (user, updatedName) => {
+  return updateProfile(user, {
+    displayName: updatedName, photoURL: ""
+  });
+}
+
