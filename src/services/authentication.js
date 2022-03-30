@@ -1,5 +1,5 @@
 import { fireApp } from '../firebase';
-import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, updateProfile, deleteUser} from 'firebase/auth'
+import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, updateProfile } from 'firebase/auth'
 
 const auth = getAuth(); 
 onAuthStateChanged(auth, (user) => {
