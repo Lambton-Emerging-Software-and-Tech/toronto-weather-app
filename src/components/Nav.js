@@ -25,7 +25,7 @@ export default class Nav extends Component {
     .then((response) => {
       toast.update(logoutToast, { type: toast.TYPE.SUCCESS, autoClose: 5000, render: "Login successful!!", isLoading:false })
       // console.log("User loged out Success", response);
-      window.alert("User logged out Success");
+      // window.alert("User logged out Success");
       window.location = "/login";
     })
     .catch((error) => {
