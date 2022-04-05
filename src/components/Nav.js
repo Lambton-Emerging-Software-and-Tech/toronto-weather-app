@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { toast } from "react-toastify";
 import { userLogout } from "../services/authentication";
 
 export default class Nav extends Component {
@@ -10,7 +11,7 @@ export default class Nav extends Component {
     let accessToken = JSON.parse(localStorage.getItem("access_token"));
     let displayName = JSON.parse(localStorage.getItem("displayName"));
     if (accessToken) {
-      console.log("Found User");
+      // console.log("Found User");
       this.setState({
         isLoggedIn: true,
         displayName,
@@ -19,11 +20,17 @@ export default class Nav extends Component {
   };
 
   LogoutUser = () => {
-    userLogout().then((response) => {
-      console.log("User loged out Success", response);
+    let logoutToast = toast.loading('Logging you out....')
+    userLogout()
+    .then((response) => {
+      toast.update(logoutToast, { type: toast.TYPE.SUCCESS, autoClose: 5000, render: "Login successful!!", isLoading:false })
+      // console.log("User loged out Success", response);
       window.alert("User logged out Success");
       window.location = "/login";
-    });
+    })
+    .catch((error) => {
+      toast.update(logoutToast, { type: toast.TYPE.ERROR, autoClose: 5000, render: "Error in logging out", isLoading:false })
+    })
   };
 
   onMenuClick = () => {
@@ -148,6 +155,7 @@ export default class Nav extends Component {
             )}
           </div>
           {/* login / logout  */}
+          
         </div>
       </div>
     );

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { toast } from "react-toastify";
 import { logInWithEmailAndPassword } from "../services/authentication";
 // import { API } from "../api";
 // import Axios from "../services/axios";
@@ -65,7 +66,7 @@ export default class Login extends Component {
     //     password: this.state.password,
     //     email: this.state.email,
     //   };
-
+      let loginToast = toast.loading("Logging you in..")
       logInWithEmailAndPassword(this.state.email, this.state.password)
         .then((userCredential) => {
           // Signed in
@@ -73,13 +74,14 @@ export default class Login extends Component {
           console.log("Login successful with user", user)
           
           sessionStorage.setItem('Auth Token', userCredential?._tokenResponse?.refreshToken)
-
+          toast.update(loginToast, { type: toast.TYPE.SUCCESS, autoClose: 5000, render: "Login successful!!", isLoading:false })
           window.location = '/clock'
           // ...
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
+          toast.update(loginToast, { type: toast.TYPE.ERROR, autoClose: 5000, render: errorMessage, isLoading:false })
         });
 
 
