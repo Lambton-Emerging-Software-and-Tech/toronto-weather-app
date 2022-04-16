@@ -18,7 +18,7 @@ export default class Weather extends Component {
         return response.json();
       })
       .then(function (data) {
-        console.log("weather API Data for Toronto: ", data);
+        // console.log("weather API Data for Toronto: ", data);
         if (data?.name){
             let weather = data?.weather[0];
             that.setState({

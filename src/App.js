@@ -4,6 +4,9 @@ import Nav from "./components/Nav";
 import Register from "./components/Register";
 import Router from "./Router";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
   return (
     <div>
@@ -13,6 +16,7 @@ function App() {
       <div className="conten flex-1">
               <Router />
       </div>
+      <ToastContainer />
     </div>
   );
 }
