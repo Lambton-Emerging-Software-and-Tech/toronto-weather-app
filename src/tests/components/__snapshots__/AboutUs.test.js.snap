@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should test AboutUs component 1`] = `
+<div>
+  This is About Us
+</div>
+`;

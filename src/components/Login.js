@@ -157,8 +157,8 @@ export default class Login extends Component {
             </a>
           </div>
           <div className="text-xs text-right mt-2 text-skin-dark">
-            New to Financial Advisor?{" "}
-            <a className="text-blue-600" href="/signup">
+            New to Toronto Weather App?{" "}
+            <a className="text-blue-600" href="/register">
               Signup
             </a>
           </div>

@@ -302,8 +302,8 @@ export default class Register extends Component {
           </div>
           {this.state.isTouched && (
             <div className={`text-red-600 text-xs ml-2`}>
-              <div className={`${this.state.allRequiredFields ? 'text-green-600': ''}`}>Al Fields are Required</div>
-              <div className={`${this.state.isPasswordMatching ? 'text-green-600': ''}`}>Confirm Password should match the password</div>
+              <div className={`${this.state.allRequiredFields ? 'text-green-600': ''}`}>All Fields are Required</div>
+              <div className={`${this.state.isPasswordMatching ? 'text-green-600': ''}`}>Confirm Password should match with the password</div>
               <div
                 className={`${this.state.isPasswordValidated ? 'text-green-600': ''}`}
                 data-bs-toggle="tooltip"

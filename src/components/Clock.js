@@ -17,7 +17,7 @@ export default class Clock extends Component {
   /**
    * returns a complete date in string format
    * @param {String} datestr input date in string format -> '01 Sept, 2021'
-   * @returns complete date -> "Wed, 1 September 2021"
+   * @returns complete date -> "2022-04-16"
    */
   getCompleteDate = (date) => {
     // let date = new Date(datestr.replace(/-/g, "/").toString());

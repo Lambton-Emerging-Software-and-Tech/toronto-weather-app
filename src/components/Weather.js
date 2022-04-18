@@ -5,7 +5,7 @@ export default class Weather extends Component {
   state = {
     temperature: 0,
     feelsLikeTemperature: 0,
-    city: "Toronto",
+    city: "Gujarat",
     imgsrc: "http://openweathermap.org/img/wn/10d@2x.png",
     status: "clear",
     wind: 0,
