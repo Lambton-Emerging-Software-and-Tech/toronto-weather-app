@@ -7,10 +7,3 @@ cache:
 script:
  - npm run test
  - npm run build || true
-# deploy:
-#  provider: pages
-#  skip_cleanup: true
-#  github_token: $GITHUB_TOKEN
-#  local_dir: build
-#  on:
-#    branch: staging
