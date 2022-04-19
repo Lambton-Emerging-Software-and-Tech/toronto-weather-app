@@ -6,3 +6,8 @@ cache:
 script: 
   - npm test
   - CI=false npm run build
+deploy:
+  skip_cleanup: true
+  provider: firebase
+  token:
+    secure: ${FIREBASE_TOKEN}
