@@ -1,7 +1,4 @@
 language: node_js
-node_js:
- - "stable"
-install: npm install --force
-script:
- - npm run test
- - npm run build
+node_js: lts/*
+install: true
+script: echo "script"
