@@ -1,6 +1,8 @@
 # toronto-weather-app
 Source code Directory: https://github.com/Lambton-Emerging-Software-and-Tech/toronto-weather-app/tree/main/src
+
 Public URL: https://toronto-weather-app.firebaseapp.com/ 
+
 
 Toronto Weather app is a web app used for montoring current date, time and weather for toronto.
 
