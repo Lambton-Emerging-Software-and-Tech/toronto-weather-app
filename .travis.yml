@@ -6,10 +6,11 @@ cache:
 script: 
   - npm test
   - CI=false npm run build
+before_deploy: "Deployment started"
 deploy:
   cleanup: true
   provider: firebase
   token:
-    secure: ${FIREBASE_TOKEN}
+    secure: "nHrqh6cwqYskmLayXYwcmSRKtcdobFDiqndMgSH/fBXPhZK49ui1pDxHZOfznlwV2emJIZcDEbHcRzNigwMnrZbmNfRxtryM4pgXkyV03W3mqcmygzR5Ius8epDQF4fx9EEaxd55aKt9rLyQcHrAjl0pME2lzWkcXGjQlHEzjKp9AEPi1FXcRcu7FAL1TinDEcW8yyvtvChjVi3uwoHAYbTLxCWQ2YM0+8lRi8iYDjwdLKP7zrICQufPSiwWdtBd0jv58NmaE1Gj/Jg+eLOaGqKWe9rKIMrRXGs9p6n+zLpMmMOzDqcV2HiCFFOBWN2GR9jp+WG7uGLdxTW/XTgthWC9t6TKyMZMSeLJMbRLNCjjXmi37P3irxXR2LHvEweWxTwveNKREOersLnuMsqoEwMHV+2zvgPusyDWYT9urtJFCFFwBtVpuq07UmejIQ40fSRx5JXrLSKh1HKYBLw8M7OlKCwl+wuc7mAjOxvhlmbw8fILoWuMKDut1LUMdb6ZGW2lWUUs/tLd4JzC2aEI6O+lr/ARR2YjY8aKSZvA9v0qb1wMoZP08TeKprHUdnU6QJvbwHUZLu5yQGHcobs1oFaIOjMSNgSzoJJ7/LjMmXfoeDkE/olPSDj6QQNpknFLRrLSPToc2jVm+CeJuXeSeaUEg0V3z/ZAwlJB+iJ3TtA="
   on:
     branch: jaimin
