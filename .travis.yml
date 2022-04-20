@@ -8,9 +8,14 @@ script:
 - CI=false npm run build
 before_deploy: echo 'Deployment started'
 deploy:
-  cleanup: true
-  provider: firebase
-  token:
-    secure: ojsGknkSaxtoI2mGMV9eHEp3y4Xedgy7x43NoRiAQU0u3k7K5V/mmUWBdELRA/+61AAJpcv1Y/9ay8sPkTV9qiSWz9nLwTi0djCMmblFftYqZ73Y8drxiFLe7S1OteWOloM/5YoJd9HUhaKjL/HhWNdiWAEOhcvoSXX3d4iXrc9I8Fklb3SUO4JhF0lKTU+/seOJ+1I00IOaPh1MVTA/mRLUblrkdsMVPiadkv0jDYRaTQleEy2qit8Zj5LkTQm/80UUPUP3Cnh7BoCFRRJLynJsuOjG5hUIacFqLplUdASaivszKEKC/BI3KzzqJyXBjRBM0yuD8yBDFj+fBBmdiXMRwDWyK/QcOsm5SLVWcnFTNNDmdT/dVl4lhXbPL6dCCzODPbykDMnTAqxBv3dUtT3NiEt1cwjVzkoJ5ahsrhW3cBK7x2DPAxwY4b0IZScDtlN39p1xn7PebzWoi3oUO61qEvkndPrLpleGQapJH44ALdcLT3Vy+60Nj7GWvi2gN6oa1qZmNf1Es0lGv14/J5QMgTkPfe+h7oYg6IFg58znYW+tSJd4oVjidd9VhpT66lydL59+dfYBOlmgzYqqge50QOPhpPi09qzPcNzAJoEg38OrCxsNbraR2MmaNDNwb5Gb6R9n1J0KE1fV4hc44G85LEQE3uGfxq6FlHq2D3g=
-  on:
-    branch: jaimin
+  - provider: pages
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN
+    keep_history: true
+    on:
+      branch: master
+  - provider: firebase
+    token:
+      secure: $FIREBASE_TOKEN_ENCRYPTED
+    on:
+      branch: jaimin
