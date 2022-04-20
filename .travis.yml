@@ -8,14 +8,15 @@ script:
 - CI=false npm run build
 before_deploy: echo 'Deployment started'
 deploy:
-  - provider: pages
-    skip_cleanup: true
-    github_token: $GITHUB_TOKEN
-    keep_history: true
-    on:
-      branch: master
-  - provider: firebase
-    token:
-      secure: $FIREBASE_TOKEN_ENCRYPTED
-    on:
-      branch: jaimin
+- provider: pages
+  skip_cleanup: true
+  github_token: "$GITHUB_TOKEN"
+  keep_history: true
+  on:
+    branch: master
+- provider: firebase
+  token:
+    secure: "$FIREBASE_TOKEN_ENCRYPTED"
+  on:
+    branch: jaimin
+  message: "Firebase deployment running"
