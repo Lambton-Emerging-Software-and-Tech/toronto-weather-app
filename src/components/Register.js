@@ -1,8 +1,8 @@
 import { deleteUser } from "firebase/auth";
 import React, { Component } from "react";
 import { registerUserwithEmailAndPassword, updateUserDisplayName } from "../services/authentication";
-// import { API } from "../api";
-// import Axios from "../services/axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default class Register extends Component {
   state = {
@@ -46,7 +46,7 @@ export default class Register extends Component {
    * @returns
    */
   validatePasswordsMatch = (data) => {
-    console.log("during password match: ", data)
+    // console.log("during password match: ", data)
     return data.password === data.confirmPassword;
   };
 
@@ -134,27 +134,30 @@ export default class Register extends Component {
         email: this.state.email,
       };
 
+
+      let registerToast = toast.loading("Registering...");
       registerUserwithEmailAndPassword(this.state.email, this.state.password)
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-        console.log("Register Success!! with ", userCredential)
+        // console.log("Register Success!! with ", userCredential)
         // ...
 
         // Update user displayname
         let displayName = data.firstname + " " + data.lastname;  
         updateUserDisplayName(user, displayName)
           .then(() => {
-            console.log(`User's display name updated to ${displayName}`);
+            toast.update(registerToast, { type: toast.TYPE.SUCCESS, autoClose: 5000, render: "Successfull registered!!", isLoading:false })
+            // console.log(`User's display name updated to ${displayName}`);
             window.location = '/login';
           })
           .catch((error) => {
-            const errorCode = error.code;
+            // const errorCode = error.code;
             const errorMessage = error.message;
-
+            toast.update(registerToast, { type: toast.TYPE.ERROR, autoClose: 5000, render: errorMessage, isLoading:false })
             // delete user and redirect to register page if there is an error in updating the displayname
             deleteUser(user).then(() => {
-              console.log('user successfully deleted');
+              // console.log('user successfully deleted');
               window.location = '/register';
             }).catch((error) => {
               const errorCode = error.code;
@@ -166,6 +169,9 @@ export default class Register extends Component {
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
+            toast.update(registerToast, { type: toast.TYPE.ERROR, autoClose: 5000, render: errorMessage, isLoading:false })
+            // console.log("error at registration")
+            // console.log(error)
             // ..
         });
     //   Axios("POST", API.SIGNUP, false, data)
@@ -296,8 +302,8 @@ export default class Register extends Component {
           </div>
           {this.state.isTouched && (
             <div className={`text-red-600 text-xs ml-2`}>
-              <div className={`${this.state.allRequiredFields ? 'text-green-600': ''}`}>Al Fields are Required</div>
-              <div className={`${this.state.isPasswordMatching ? 'text-green-600': ''}`}>Confirm Password should match the password</div>
+              <div className={`${this.state.allRequiredFields ? 'text-green-600': ''}`}>All Fields are Required</div>
+              <div className={`${this.state.isPasswordMatching ? 'text-green-600': ''}`}>Confirm Password should match with the password</div>
               <div
                 className={`${this.state.isPasswordValidated ? 'text-green-600': ''}`}
                 data-bs-toggle="tooltip"

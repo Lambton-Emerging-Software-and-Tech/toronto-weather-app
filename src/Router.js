@@ -6,6 +6,7 @@ import Clock from "./components/Clock";
 import Weather from "./components/Weather";
 import AboutUs from "./components/AboutUs";
 import ContactUs from "./components/ContactUs";
+import ProtectedRoute from "./ProtectedRoutes";
 
 export default class Router extends Component {
   render() {
@@ -16,10 +17,14 @@ export default class Router extends Component {
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/clock" element={<Clock />} />
-        <Route exact path="/weather" element={<Weather />} />
+        {/* <Route exact path="/weather" element={<Weather />} /> */}
         <Route exact path="/aboutus" element={<AboutUs />} />
         <Route exact path="/contactus" element={<ContactUs />} />
         <Route exact path="/" element={<Clock />} />
+
+        <Route exact="/dashboard" element={<ProtectedRoute />}>
+          <Route exact path="/weather" element={<Weather />} />
+        </Route>
         {/* <Route exact path="/aboutus" element={<AboutUs />} />
         <Route exact path="/contactus" element={<ContactUs />} />
 

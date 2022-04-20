@@ -1,0 +1,122 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should test Weather component 1`] = `
+<div
+  className="w-full flex items-center justify-center mt-10"
+>
+  <div
+    className="block items-center font-bold justify-center gap-x-2 rounded-lg shadow-md"
+    style={
+      Object {
+        "minHeight": "12rem",
+        "minWidth": "20rem",
+      }
+    }
+  >
+    <div
+      className="rounded-md shadow-sm bg-skin-fill text-skin-light p-3 flex items-center gap-x-1"
+    >
+      <div
+        className="h-5 w-5"
+      >
+        <svg
+          classname="h-5 w-5"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            clipRule="evenodd"
+            d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+            fillRule="evenodd"
+          />
+        </svg>
+      </div>
+      <div>
+        Gujarat
+      </div>
+    </div>
+    <div
+      className="flex item-center justify-between"
+    >
+      <div
+        className="block p-3"
+      >
+        <div
+          className="flex items-center"
+        >
+          <div
+            className="text-8xl"
+          >
+            0
+          </div>
+          <div
+            className="text-5xl"
+          >
+            °C
+          </div>
+        </div>
+        <div
+          className="flex items-center font-light text-sm"
+        >
+          <div>
+            Feels like: 
+          </div>
+          <div>
+            0
+             °C
+          </div>
+        </div>
+        <div
+          className="flex items-center gap-x-1"
+        >
+          <div
+            className="h-6 w-6"
+          >
+            <svg
+              style={
+                Object {
+                  "clipRule": "evenodd",
+                  "fillRule": "evenodd",
+                  "strokeLinecap": "round",
+                  "strokeLinejoin": "round",
+                  "strokeMiterlimit": 2,
+                }
+              }
+              viewBox="0 0 64 64"
+              xmlSpace="preserve"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M17 29.307h18M39.5 29.307h10.848A5.652 5.652 0 0 0 56 23.655v-.003A5.651 5.651 0 0 0 50.348 18h-4.372M17 34.693h8M33.446 34.693h16.902A5.651 5.651 0 0 1 56 40.345v.003A5.651 5.651 0 0 1 50.348 46h-4.372M8 17.921h22.726a2.719 2.719 0 0 0 2.72-2.72V15.2a2.719 2.719 0 0 0-2.72-2.72h-2.291M8 46.079h22.726a2.719 2.719 0 0 1 2.72 2.72v.001a2.719 2.719 0 0 1-2.72 2.72h-2.291"
+                style={
+                  Object {
+                    "fill": "none",
+                    "stroke": "#222a33",
+                    "strokeWidth": "1.5px",
+                  }
+                }
+              />
+            </svg>
+          </div>
+          <div
+            className="font-light text-sm"
+          >
+            0
+             m/sec
+          </div>
+        </div>
+      </div>
+      <div
+        className="w-32 h-32 my-auto"
+      >
+        <img
+          alt="weather state"
+          className="h-full w-full"
+          src="http://openweathermap.org/img/wn/10d@2x.png"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
