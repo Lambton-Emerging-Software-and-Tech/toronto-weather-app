@@ -6,7 +6,7 @@ cache:
 script: 
   - npm test
   - CI=false npm run build
-before_deploy: "Deployment started"
+before_deploy: "echo 'Deployment started'"
 deploy:
   cleanup: true
   provider: firebase
