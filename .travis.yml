@@ -11,7 +11,7 @@ deploy:
   provider: firebase
   skip_cleanup: true
   token:
-    secure: "$FIREBASE_TOKEN_ENCRYPTED"
+    secure: $FIREBASE_TOKEN_ENCRYPTED
   on:
     branch: jaimin
   message: "Firebase deployment running"
