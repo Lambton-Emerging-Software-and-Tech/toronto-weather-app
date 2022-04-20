@@ -13,7 +13,7 @@ Milan lakhani\
 Nihar Dhanani\
 Nehalkumar Jesdadiya\
 Jaimin Patel\
-Gurmanjyot Cheema\
+Gurmanjyot Cheema
 
 
 Course Faculty : Prof. Vahid Hadavi
