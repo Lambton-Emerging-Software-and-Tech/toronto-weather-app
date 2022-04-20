@@ -3,7 +3,7 @@ import {getAuth , signOut, createUserWithEmailAndPassword, signInWithEmailAndPas
 
 const auth = getAuth(); 
 onAuthStateChanged(auth, (user) => {
-    console.log("Auth state has changed", user)
+    // console.log("Auth state has changed", user)
     if (user) {
       // User is signed in, see docs for a list of available properties
       // https://firebase.google.com/docs/reference/js/firebase.User

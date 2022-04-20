@@ -1,0 +1,17 @@
+language: node_js
+node_js: lts/*
+cache:
+  directories:
+  - node_modules
+script:
+- npm test
+- CI=false npm run build
+before_deploy: echo 'Deployment started'
+deploy:
+  provider: firebase
+  skip_cleanup: true
+  token:
+    secure: "UhubtfvVFuVK9i46TEQF6nGdy8LB5yqmidt4lnU0IjjO4rPuQt658aFDskFCXoQb6VP33J29fPYv5EKDBlif0M32hFstN4u5je0bSkqn7ovWPhjcFYPFBOzOy8j57CzoNbZijFneHxMlj8Bl6bWkAfh3UGKX7CF8MF+oJp87HAmNomQhRgrhflUGpiyrvJ1+lcI7njg7O3JMzxu4hI5buePw2Qyh1llrua0ysJ4kt5lhHoP+IQk97tTxVsgWXeGU0OkxXm7I9gJ2nrFGmQUsTgiQ2fNnRUMsrJbk8hXKkve7UrRg4rkaChG9adggrOyY6gDNYyCC1Vw9R08JXCavtiknlHvJDfFd916Jx8NbUr4tnKBSt/8DmjT/D5JXHzSvxcT4tETxRijK2//8CE0KAYOhd/yGBZb2JK4zf11z8wp4wB4y/sMaR4jz4p99BdPKNvxNUuAjD4Ni0/u1aPUd+ScaZccYgly5QC0jti609XkARoVIlwIMirko9lScfzL50vQl7go/IuYpiCCWAI7qX++zqn37bgADvXIk/Wn3sk9p+VGHqFBRVhdYqJ3BNAR0MTt2Lau9JwUOGEkymogmk5UCwSFG2wtO9qo0+wWo8TLuWUQXQVIQ4NgIuhELk/c50C03prUh96JaYFm7Qfr2aATGGBGcHiStvC6Ns8frZ+A="
+  on:
+    branch: jaimin
+  message: "Firebase deployment running"

@@ -1,8 +1,11 @@
 import "./App.css";
-import Login from "./components/Login";
+// import Login from "./components/Login";
 import Nav from "./components/Nav";
-import Register from "./components/Register";
+// import Register from "./components/Register";
 import Router from "./Router";
+
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -13,6 +16,7 @@ function App() {
       <div className="conten flex-1">
               <Router />
       </div>
+      <ToastContainer />
     </div>
   );
 }

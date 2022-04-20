@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { toast } from "react-toastify";
 import { logInWithEmailAndPassword } from "../services/authentication";
 // import { API } from "../api";
 // import Axios from "../services/axios";
@@ -15,9 +16,9 @@ export default class Login extends Component {
 
   componentDidMount = () => {
     // making sure that login screen does not appear if user is logged in and redirected to the dashboard
-    // if(JSON.parse(localStorage.getItem('token'))){
-    //   window.location = '/dashboard'
-    // }
+    if(JSON.parse(localStorage.getItem('access_token'))){
+      window.location = '/weather'
+    }
   };
 
   /**
@@ -65,7 +66,7 @@ export default class Login extends Component {
     //     password: this.state.password,
     //     email: this.state.email,
     //   };
-
+      let loginToast = toast.loading("Logging you in..")
       logInWithEmailAndPassword(this.state.email, this.state.password)
         .then((userCredential) => {
           // Signed in
@@ -73,35 +74,14 @@ export default class Login extends Component {
           console.log("Login successful with user", user)
           
           sessionStorage.setItem('Auth Token', userCredential?._tokenResponse?.refreshToken)
-
-          window.location = '/clock'
+          toast.update(loginToast, { type: toast.TYPE.SUCCESS, autoClose: 5000, render: "Login successful!!", isLoading:false })
+          window.location = '/weather'
           // ...
         })
         .catch((error) => {
-          const errorCode = error.code;
           const errorMessage = error.message;
+          toast.update(loginToast, { type: toast.TYPE.ERROR, autoClose: 5000, render: errorMessage, isLoading:false })
         });
-
-
-      //   Axios("POST", API.LOGIN, false, data)
-      //   .then(res => {
-      //     let data = res.data
-      //     console.log("Login response : ", data)
-      //     if(data.Success) {
-      //       if(data?.Data?.token){
-      //         localStorage.setItem('token', JSON.stringify(data?.Data?.token))
-      //         window.location = '/dashboard';
-      //       } else {
-      //         window.alert("Couldn't log you in at this moment. Please try again later")
-      //       }
-      //     } else {
-      //       if(data?.ResponseCode === 402){
-      //         window.alert(data.ErrorMessage);
-      //       } else {
-      //         window.alert("An unexpected error occurred. Please try again later.");
-      //       }
-      //     }
-      //   })
     }
   };
 
@@ -177,8 +157,8 @@ export default class Login extends Component {
             </a>
           </div>
           <div className="text-xs text-right mt-2 text-skin-dark">
-            New to Financial Advisor?{" "}
-            <a className="text-blue-600" href="/signup">
+            New to Toronto Weather App?{" "}
+            <a className="text-blue-600" href="/register">
               Signup
             </a>
           </div>
